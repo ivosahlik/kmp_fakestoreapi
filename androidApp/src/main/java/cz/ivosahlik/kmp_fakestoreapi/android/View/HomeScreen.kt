@@ -17,5 +17,4 @@ fun HomeScreen () {
         .background(MaterialTheme.colorScheme.surface), contentAlignment = Alignment.Center) {
         CircularProgressIndicator()
     }
-
 }
