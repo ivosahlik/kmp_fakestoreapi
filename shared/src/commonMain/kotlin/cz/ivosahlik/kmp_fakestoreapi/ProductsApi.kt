@@ -10,6 +10,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.json.Json
+import cz.ivosahlik.kmp_fakestoreapi.Constants.BASE_URL
 
 class ProductsApi {
 
@@ -31,7 +32,7 @@ class ProductsApi {
                 emit(
                     RequestState.Success(
                         data = Products(
-                            items = httpClient.get(urlString = "${Constants.BASE_URL}products?limit=$limit").body()
+                            items = httpClient.get(urlString = "${BASE_URL}products?limit=$limit").body()
                         )
                     )
                 )
