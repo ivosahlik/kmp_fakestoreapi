@@ -11,11 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import cz.ivosahlik.kmp_fakestoreapi.model.Product
+import cz.ivosahlik.kmp_fakestoreapi.Product
 
 @Composable
 fun ProductCard(product: Product) {
@@ -37,18 +36,4 @@ fun ProductCard(product: Product) {
             )
         }
     }
-}
-
-
-@Preview
-@Composable
-fun ProductCardPreview() {
-    ProductCard(product = Product(
-        id = 1,
-        title = "My Title Test",
-        description = "This is my product description",
-        price = 100.0,
-        category = "Man",
-        image = ""
-    ))
 }
