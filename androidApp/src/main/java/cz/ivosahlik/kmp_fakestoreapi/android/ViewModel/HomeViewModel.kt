@@ -5,6 +5,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import cz.ivosahlik.kmp_fakestoreapi.Constants.LIMIT_COUNT
+import cz.ivosahlik.kmp_fakestoreapi.Constants.SORT
 import cz.ivosahlik.kmp_fakestoreapi.ProductsApi
 import cz.ivosahlik.kmp_fakestoreapi.RequestState
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +20,7 @@ class HomeViewModel: ViewModel() {
 
     init {
         viewModelScope.launch(Dispatchers.Main) {
-            ProductsApi().fetchProducts(limit = 10).collectLatest {
+            ProductsApi().fetchProductsByLimitAndSort(limit = LIMIT_COUNT, sort = SORT).collectLatest {
                 _requestState.value = it
             }
         }

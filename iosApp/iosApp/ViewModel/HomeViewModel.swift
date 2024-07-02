@@ -17,7 +17,7 @@ class HomeViewModel: ObservableObject {
     
     @MainActor
     func fetchData() async {
-        for await requestState in ProductsApi().fetchProducts(limit: 10) {
+        for await requestState in ProductsApi().fetchProductsByLimitAndSort(limit: Constants().LIMIT_COUNT, sort: "asc") {
             response = requestState
         }
     }

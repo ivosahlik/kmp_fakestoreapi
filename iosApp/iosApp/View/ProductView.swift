@@ -19,7 +19,7 @@ struct ProductView: View {
                 if let image = imageUrl.image {
                     image
                         .resizable()
-                        .scaledToFill()
+                        .scaledToFit()
                         .animation(.default, value: image)
                         .accessibility(hidden: false)
                         .accessibilityLabel(Text("Product Thumbnail"))

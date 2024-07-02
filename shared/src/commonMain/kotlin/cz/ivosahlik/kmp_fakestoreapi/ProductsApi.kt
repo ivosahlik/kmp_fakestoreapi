@@ -24,7 +24,7 @@ class ProductsApi {
         }
     }
 
-    fun fetchProducts(limit: Int): Flow<RequestState> {
+    fun fetchProductsByLimit(limit: Int): Flow<RequestState> {
         return flow {
             emit(RequestState.Loading)
             delay(2000)
@@ -33,6 +33,26 @@ class ProductsApi {
                     RequestState.Success(
                         data = Products(
                             items = httpClient.get(urlString = "${BASE_URL}products?limit=$limit").body()
+                        )
+                    )
+                )
+            } catch (e: Exception) {
+                Logger.setTag("ProductsApi")
+                Logger.e { e.message.toString() }
+                emit(RequestState.Error(message = "Error while fetching the data."))
+            }
+        }
+    }
+
+    fun fetchProductsByLimitAndSort(limit: Int, sort: String): Flow<RequestState> {
+        return flow {
+            emit(RequestState.Loading)
+            delay(2000)
+            try {
+                emit(
+                    RequestState.Success(
+                        data = Products(
+                            items = httpClient.get(urlString = "${BASE_URL}products?limit=$limit&sort=$sort").body()
                         )
                     )
                 )
