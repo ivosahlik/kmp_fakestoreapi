@@ -7,8 +7,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if viewModel.response?.isSuccess() == true {
-                List(viewModel.response?.getProducts().items ?? [], id: \.id) { element in
-                    ProductView(product: element)
+                List(viewModel.response?.getProducts().items ?? [], id: \.id) { product in
+                    ProductView(product: product)
                 }
             } else if viewModel.response?.isError() == true {
                 VStack {
